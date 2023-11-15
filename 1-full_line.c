@@ -8,10 +8,15 @@
 char *full_line(void)
 {
 	ssize_t s;
-	char *str;
+	char *str = NULL;
 	size_t n = 0, l = 0;
 
 	s = getline(&str, &n, stdin);
+	if (s == -1)
+	{
+	    perror("getline failed");
+	    exit(EXIT_FAILURE);
+	}
 	l = strlen(str);
 	str[l - 1] = '\0';
 	if (s == EOF)
