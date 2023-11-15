@@ -15,7 +15,6 @@ char *full_line(void)
 	if (s == -1)
 	{
 		free(str);
-		putchar(10);
 		exit(0);
 	}
 	l = strlen(str);
