@@ -14,8 +14,9 @@ char *full_line(void)
 	s = getline(&str, &n, stdin);
 	if (s == -1)
 	{
-	    perror("getline failed");
-	    exit(EXIT_FAILURE);
+		free(str);
+		putchar(10);
+		exit(0);
 	}
 	l = strlen(str);
 	str[l - 1] = '\0';
