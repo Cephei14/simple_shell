@@ -11,9 +11,11 @@
 
 char *full_line();
 char **split_line(char *text);
-int execute(char **cmd, char **progname, int n);
+int execute(char **cmd, char *command, char **progname, int n);
 void Dfree(char **arr);
-int search_function(char *src);
+char *search_function(char **src);
+char *get_path();
+int check_command(char *command);
 
 extern char **environ;
 

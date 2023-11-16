@@ -9,8 +9,7 @@
 
 int main(int ac, char **progname)
 {
-	char *text = NULL;
-	char **cmd;
+	char *text = NULL, **cmd, *command;
 	int sts, n = 1;
 
 	(void)ac;
@@ -31,8 +30,17 @@ int main(int ac, char **progname)
 			n++;
 			continue;
 		}
-		sts = execute(cmd, progname, n);
+		command = search_function(cmd);
+		if (command == NULL)
+		{
+			sts = 127;
+			fprintf(stderr, "%s: %d: %s: not found\n", progname[0], n, cmd[0]);
+			free(command);
+			Dfree(cmd);
+			n++;
+			continue;
+		}
+		sts = execute(cmd, command, progname, n);
 		n++;
 	}
-	return (sts);
 }

@@ -15,7 +15,7 @@ char *full_line(void)
 	if (s == -1)
 	{
 		free(str);
-		exit(0);
+		return (NULL);
 	}
 	l = strlen(str);
 	str[l - 1] = '\0';

@@ -8,7 +8,7 @@
  * Return: status of the execution
 */
 
-int execute(char **cmd, char **progname, int n)
+int execute(char **cmd, char *command, char **progname, int n)
 {
 	pid_t child;
 	int status;
@@ -17,20 +17,20 @@ int execute(char **cmd, char **progname, int n)
 	if (child == -1)
 	{
 		perror("fork failed\n");
-		return (-1);
+		return (127);
 	}
 	if (child == 0)
 	{
-		if (execve(cmd[0], cmd, environ) == -1)
+		if (execve(command, cmd, environ) == -1)
 		{
-			printf("%s: %d: not found\n", progname[0] + 2, n);
-			Dfree(cmd);
+			printf("%s: %d: %s: not found\n", progname[0], n, cmd[0]);
 			exit(127);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, 0);
+		free(command);
 		Dfree(cmd);
 	}
 	return (WEXITSTATUS(status));

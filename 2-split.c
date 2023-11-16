@@ -30,7 +30,7 @@ char **split_line(char *str)
 	{
 		perror("malloc failed\n");
 		free(str);
-		exit(1);
+		return (NULL);
 	}
 	token = strtok(str, delim);
 	while (token)
