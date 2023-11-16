@@ -1,16 +1,16 @@
 #include "shell.h"
 
 /**
- * main - a simple shell
- * @ac: number of args
- * @progname: used to get the name of the first arg
+ * main - a simple shell function
+ * @ac: nb of args
+ * @progname: name of prog
  * Return: 0
- */
+*/
 
 int main(int ac, char **progname)
 {
 	char *text = NULL, **cmd, *command;
-	int sts, n = 1;
+	int sts = 0, n = 1;
 
 	(void)ac;
 	while (1)
@@ -21,7 +21,7 @@ int main(int ac, char **progname)
 		if (text == NULL)
 		{
 			if (isatty(STDIN_FILENO))
-				putchar(10);
+				printf("\n");
 			return (sts);
 		}
 		cmd = split_line(text);

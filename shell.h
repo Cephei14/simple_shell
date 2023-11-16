@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef SHELL_HEADER_H
+#define SHELL_HEADER_H
 
 #include <stdio.h>
 #include <string.h>
@@ -20,4 +20,3 @@ int check_command(char *command);
 extern char **environ;
 
 #endif
-
