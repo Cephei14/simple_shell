@@ -3,6 +3,7 @@
 /**
  * execute - function that execute a command
  * @cmd: NULL terminated strings
+ * @command: the command that gonna be executed
  * @progname: first arg value aka name of the program
  * @n: a number that count the command executed
  * Return: status of the execution
