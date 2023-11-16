@@ -35,8 +35,7 @@ char *search_function(char **cmd)
 		{
 			free(path);
 			return (NULL);
-		}
-		while (folder)
+		} while (folder)
 		{
 			strcpy(command, folder);
 			strcat(command, "/");
